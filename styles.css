@@ -1,0 +1,305 @@
+:root {
+    /* Light Theme (Default) */
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --header-bg-text: #2c3e50; /* Renamed from --header-bg to avoid conflict */
+    --header-title-text: #2c3e50;
+    --header-button-text: white;
+    --editor-bg: white;
+    --editor-border: #ccc;
+    --editor-tabs-bg: #e9e9e9;
+    --tab-button-hover-bg: #f1f1f1;
+    --tab-active-border: #3498db;
+    --button-primary-bg: #3498db;
+    --button-primary-hover-bg: #2980b9;
+    --button-secondary-bg: #4CAF50;
+    --button-secondary-hover-bg: #45a049;
+    --button-text: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --preview-bg: white; 
+    --textarea-text: #333;
+    --tool-header-bg: #2c3e50; /* Added for tool headers */
+    --tool-header-text: white; /* Added for tool headers */
+}
+
+body.dark-theme {
+    /* Dark Theme Overrides */
+    --bg-color: #2c3e50;
+    --text-color: #f5f5f5;
+    --header-bg-text: #1a252f;
+    --header-title-text: #e0e0e0;
+    --header-button-text: #1c1c1c; 
+    --editor-bg: #34495e;
+    --editor-border: #566573;
+    --editor-tabs-bg: #2c3e50; 
+    --tab-button-hover-bg: #415a71;
+    --tab-active-border: #5dade2;
+    --button-primary-bg: #5dade2;
+    --button-primary-hover-bg: #85c1e9;
+    --button-secondary-bg: #27ae60;
+    --button-secondary-hover-bg: #2ecc71;
+    --button-text: #1c1c1c;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --preview-bg: #3f5a74; /* Darker preview */
+    --textarea-text: #f5f5f5;
+    --tool-header-bg: #1a252f; /* Dark tool headers */
+    --tool-header-text: #e0e0e0; /* Dark tool headers */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+header h1 {
+    color: var(--header-title-text);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#themeToggleBtn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 8px 12px;
+    background-color: var(--button-primary-bg);
+    color: var(--header-button-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#themeToggleBtn:hover {
+    background-color: var(--button-primary-hover-bg);
+}
+
+.tools-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: calc(100vh - 150px);
+}
+
+.editors-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--editor-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    overflow: hidden;
+}
+
+.editor-tabs {
+    display: flex;
+    background-color: var(--editor-tabs-bg);
+    border-bottom: 1px solid var(--editor-border);
+    padding: 5px 5px 0 5px;
+}
+
+.tab-button {
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 5px;
+    transition: background-color 0.3s, border-bottom 0.3s, color 0.3s;
+}
+
+.tab-button.active {
+    border-bottom: 3px solid var(--tab-active-border);
+    font-weight: bold;
+}
+
+.tab-button:hover {
+    background-color: var(--tab-button-hover-bg);
+}
+
+.editor-content {
+    flex-grow: 1;
+    position: relative;
+    background: var(--editor-bg);
+    overflow: hidden;
+}
+
+.editor-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+.editor-pane.active {
+    display: flex;
+}
+
+.preview-section {
+    background: var(--editor-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-header {
+    background: var(--tool-header-bg);
+    color: var(--tool-header-text);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tool-header h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#runBtn {
+    margin-left: auto;
+    align-self: center;
+    background: var(--button-primary-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#runBtn:hover {
+    background: var(--button-primary-hover-bg);
+}
+
+textarea {
+    width: 100%;
+    flex-grow: 1;
+    padding: 15px;
+    border: none;
+    resize: none;
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    outline: none;
+    background-color: var(--editor-bg);
+    color: var(--textarea-text);
+}
+
+#previewFrame {
+    width: 100%;
+    height: calc(100% - 60px);
+    border: none;
+    background: var(--preview-bg);
+}
+
+@media (max-width: 768px) {
+    .tools-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .editors-column {
+        height: auto;
+        gap: 20px;
+    }
+
+    .editor-tabs {
+        flex-wrap: wrap;
+    }
+
+    .editor-content {
+        height: 400px;
+    }
+
+    #previewFrame {
+        height: 400px;
+    }
+
+    body.fullscreen-preview .preview-header {
+        /* Adjustments if needed for mobile fullscreen header */
+    }
+}
+
+.preview-header button {
+    background: var(--button-secondary-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.preview-header button:hover {
+    background: var(--button-secondary-hover-bg);
+}
+
+/* Fullscreen Styles */
+body.fullscreen-preview .container > header,
+body.fullscreen-preview .editors-column {
+    display: none;
+}
+
+body.fullscreen-preview .tools-container {
+    grid-template-columns: 1fr;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+}
+
+body.fullscreen-preview .container {
+    max-width: 100%;
+    padding: 0;
+}
+
+body.fullscreen-preview .preview-section {
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: var(--editor-bg);
+}
+
+body.fullscreen-preview .preview-header h2 {
+    /* Optional: Hide the 'Preview' text in fullscreen */
+    /* display: none; */
+}
+
+body.fullscreen-preview #previewFrame {
+    height: calc(100% - 45px);
+}
+
+body.fullscreen-preview .preview-header {
+    background: var(--tool-header-bg);
+    color: var(--tool-header-text);
+} 
