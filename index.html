@@ -3,46 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Tools</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Web Development Tools</h1>
-            <button id="themeToggleBtn">Toggle Theme</button>
-        </header>
-        
-        <div class="tools-container">
-            <div class="editors-column">
-                <div class="editor-tabs">
-                    <button class="tab-button active" data-editor="html">HTML</button>
-                    <button class="tab-button" data-editor="css">CSS</button>
-                    <button class="tab-button" data-editor="js">JavaScript</button>
-                    <button id="runBtn">Run Code (Ctrl+Enter)</button>
-                </div>
-                <div class="editor-content">
-                    <div class="editor-pane active" id="htmlPane">
-                        <textarea id="htmlEditor" placeholder="Enter your HTML code here..."></textarea>
-                    </div>
-                    <div class="editor-pane" id="cssPane">
-                        <textarea id="cssEditor" placeholder="Enter your CSS code here..."></textarea>
-                    </div>
-                    <div class="editor-pane" id="jsPane">
-                        <textarea id="jsEditor" placeholder="Enter your JavaScript code here..."></textarea>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="preview-section">
-                <div class="tool-header preview-header">
-                    <h2>Preview</h2>
-                    <button id="fullscreenBtn">Full Screen</button>
-                </div>
-                <iframe id="previewFrame"></iframe>
-            </div>
-        </div>
+        <h1>QR Code Generator</h1>
+        <input type="text" id="urlInput" placeholder="Enter URL here">
+        <button id="generateBtn">Generate QR Code</button>
+        <button id="saveBtn" style="display: none;">Save as PNG</button>
+        <div id="qrcode"></div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
